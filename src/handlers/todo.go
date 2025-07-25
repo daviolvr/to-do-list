@@ -82,7 +82,7 @@ func CreateTodo(db *sql.DB) http.HandlerFunc {
 			return
 		}
 
-		w.Header().Set("Content-TYpe", "application/json")
+		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(todo)
 	}
 }
