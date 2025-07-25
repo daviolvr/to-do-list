@@ -49,7 +49,8 @@ func GetTodoByID(db *sql.DB) http.HandlerFunc {
 		}
 
 		var todo models.ToDoList
-		err = db.QueryRow("SELECT id, task, status FROM todos where id = $1", id).Scan(&todo.ID, &todo.Task, &todo.Status)
+		err = db.QueryRow("SELECT id, task, status FROM todos where id = $1", id).
+			Scan(&todo.ID, &todo.Task, &todo.Status)
 
 		if err == sql.ErrNoRows {
 			http.Error(w, "Task não encontrada", http.StatusNotFound)
